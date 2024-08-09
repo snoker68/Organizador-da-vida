@@ -10,7 +10,7 @@ data_inicio = datetime.strftime(data_inicio_str, "%d/%m/%y %H:%M")
 data_termino_str = input("Digite data e a hora do termino do evento:")
 data_termino = datetime.strftime(data_termino_str, "%d/%m/%y %H:%M")
 
-Notificação = int(input("informe quanto minutos voce gostaria de sempre lembrado antes do evento:"))_
+Notificação = int(input("informe quanto minutos voce gostaria de sempre lembrado antes do evento:"))
 
 
 calendario = Calendar()
