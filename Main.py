@@ -1,37 +1,29 @@
-from icalendar import Calendar, Event,Alarm
-from datetime import  datetime,timedelta
+import tkinter as tk
 
-titulo = input("Digite nome do evento:")
-descricao = input("Descreva seu evento")
+tarefa = ()
 
-data_inicio_str = input("Digite data e a hora do inicio do evento:")
-data_inicio = datetime.strftime(data_inicio_str, "%d/%m/%y %H:%M")
+def abrir_tarefa():
+    print("abrir tarefas")
 
-data_termino_str = input("Digite data e a hora do termino do evento:")
-data_termino = datetime.strftime(data_termino_str, "%d/%m/%y %H:%M")
+def abrir_calendario():
+    print("Abrir Calendario")
 
-Notificação = int(input("informe quanto minutos voce gostaria de sempre lembrado antes do evento:"))
+def abrir_configuração():
+    print("abrir configuração")
 
+def obter_ultima_tarefa_criada():
+    return tarefa [-1] if tarefa else "Nenhuma tarefa disponivel"
 
-calendario = Calendar()
+root = tk.Tk()
+root.title ("menu principal")
 
-evento =Event()
-evento.add('summary', titulo)
-evento.add('description', descricao)
-evento.add('dtstart', data_inicio)
-evento.add('dtend', data_termino)
+tk.Label(root,text="Menu principal", font=("Ariel", 16)).pack(pady=10)
 
-lembrete = Alarm()
-lembrete.add('action', 'Display')
-lembrete.add('description', "lembrete: " + titulo)
-lembrete.add('trigger', timedelta(minutes=-Notificação))
+tk.Button(root,text="Tarefas", font=("Ariel",20)).pack(pady=5)
+tk.Button(root,text="Calendario", font=("Ariel",20)).pack(pady=5)
+tk.Button(root,text="Configuração", font=("Ariel",20)).pack(pady=5)
 
-evento.add_component(evento)
+ultima_tarefa_criada = obter_ultima_tarefa_criada()
+tk.Label(root,text= f"Ultima tarefa: {ultima_tarefa_criada}", font=("Ariel", 12)), fg= "blue".pack(side='botton', pady=20)
 
-calendario.add_component(evento)
-
-nome_arquivo = input("digite nome do arquivo para salvar") + ".ics"
-with open(nome_arquivo,'wb') as f:
-    f.write(calendario.to_ical())
-
-print(f"Seu evento foi agendado com nome {nome_arquivo}.a arquivo gerado com sucesso")
+root.mainloop()
