@@ -24,6 +24,6 @@ tk.Button(root,text="Calendario", font=("Ariel",20)).pack(pady=5)
 tk.Button(root,text="Configuração", font=("Ariel",20)).pack(pady=5)
 
 ultima_tarefa_criada = obter_ultima_tarefa_criada()
-tk.Label(root,text= f"Ultima tarefa: {ultima_tarefa_criada}", font=("Ariel", 12)), fg= "blue".pack(side='botton', pady=20)
+tk.Label(root, text=f"Ultima tarefa: {ultima_tarefa_criada}", font=("Arial", 12), fg="blue").pack(side='bottom', pady=20)
 
 root.mainloop()
